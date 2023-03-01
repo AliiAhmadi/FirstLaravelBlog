@@ -47,7 +47,13 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        return view("post.show");
+        $post = Post::find($id);
+
+        if (!$post) {
+            abort(404);
+        }
+
+        return view('post.show', compact('post'));
     }
 
     /**
@@ -55,7 +61,12 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
-        return view("post.edit");
+        $post = Post::find($id);
+
+        if (!$post) {
+            abort(404);
+        }
+        return view("post.edit", compact("post"));
     }
 
     /**
@@ -63,7 +74,15 @@ class PostController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $post = Post::findOrFail($id); // Retrieve the post from the database by ID
+
+        $post->title = $request->title;
+
+        $post->content = $request->content;
+
+        $post->save();
+
+        return redirect()->route("post.index");
     }
 
     /**
