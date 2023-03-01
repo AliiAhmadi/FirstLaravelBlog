@@ -1,6 +1,8 @@
 @extends('layout.master')
 
-
+@section('style')
+    @include('layout.styleHidden')
+@endsection
 
 @section('content')
     <div class="container py-4">
@@ -14,7 +16,7 @@
                     <div class="card mb-3">
                         <div class="card-body">
                             <h5 class="card-title">{{ $post->title }}</h5>
-                            <p class="card-text">{{ $post->content }}</p>
+                            <p class="card-text post-excerpt">{{ $post->content }}</p>
                             <!-- Edit, Delete, and Show buttons -->
                             <a href="#" class="btn btn-primary">Edit</a>
                             <a href="#" class="btn btn-danger">Delete</a>
@@ -26,4 +28,5 @@
             </div>
         </div>
     </div>
+    @include('layout.scriptHidden')
 @endsection
