@@ -19,3 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::resource("post", "App\Http\Controllers\PostController");
+
+Route::get("/contact", "App\Http\Controllers\Contact")->name("contact");
+
+Route::get("/about", "App\Http\Controllers\About")->name("about");

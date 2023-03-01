@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+    @include('layout.nav')
     <div class="container py-4">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -18,9 +19,9 @@
                             <h5 class="card-title">{{ $post->title }}</h5>
                             <p class="card-text post-excerpt">{{ $post->content }}</p>
                             <!-- Edit, Delete, and Show buttons -->
-                            <a href="#" class="btn btn-primary">Edit</a>
+                            <a href="{{ route('post.edit', $post->id) }}" class="btn btn-primary">Edit</a>
                             <a href="#" class="btn btn-danger">Delete</a>
-                            <a href="#" class="btn btn-secondary">Show</a>
+                            <a href="{{ route('post.show', $post->id) }}" class="btn btn-secondary">Show</a>
                         </div>
                     </div>
                 @endforeach
