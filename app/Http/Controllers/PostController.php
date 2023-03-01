@@ -36,7 +36,10 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd("hello from post");
+        Post::create($request->all());
+
+        return redirect()->route("post.index");
     }
 
     /**
@@ -68,6 +71,14 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $post = Post::find($id);
+
+        if (!$post) {
+            abort(404);
+        }
+
+        $post->delete();
+
+        return redirect()->route("post.index");
     }
 }

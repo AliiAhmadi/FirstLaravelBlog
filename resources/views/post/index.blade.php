@@ -20,7 +20,12 @@
                             <p class="card-text post-excerpt">{{ $post->content }}</p>
                             <!-- Edit, Delete, and Show buttons -->
                             <a href="{{ route('post.edit', $post->id) }}" class="btn btn-primary">Edit</a>
-                            <a href="#" class="btn btn-danger">Delete</a>
+                            {{-- <a href="{{ route('post.destroy', $post->id) }}" class="btn btn-danger">Delete</a> --}}
+                            <form action="{{ route('post.destroy', $post->id) }}" method="POST" style="display: inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
                             <a href="{{ route('post.show', $post->id) }}" class="btn btn-secondary">Show</a>
                         </div>
                     </div>
